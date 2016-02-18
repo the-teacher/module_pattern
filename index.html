@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>PatternModule</title>
+  </head>
+  <body>
+    <script>
+      // window.App = require('app.js')(window)
+      // App.init()
+
+      // var App = App(window)
+      // App.init()
+
+      ;'use strict';
+
+      var App = function(window){
+        var win    = window;
+        var inited = false;
+
+        var init_module = function(){
+          console.log('MODULE INITIALIZER')
+        }
+
+        var init_module_once = function(){
+          console.log('MODULE ONCE INITIALIZER')
+        }
+
+        var init = function(){
+          if (!inited){ init_module_once() ; inited = true }
+          init_module();
+          return true;
+        }
+
+        // Define Public Methods
+        return {
+          init: init
+        }
+      };
+
+      var App = App(window);
+      App.init()
+    </script>
+
+    <div role='role'>Pattern Module</div>
+  </body>
+</html>
